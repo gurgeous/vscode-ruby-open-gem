@@ -25,28 +25,27 @@ class RubyOpenGem {
   }
 
   async onOpen0() {
-    // sanity check
+    // quick sanity check - do this before we show any progress
     await this.sanity();
 
-    // bundle list --paths
-    const { stdout } = await this.execRoot("bundle list --paths");
-    const dirs = stdout.trim().split("\n");
+    // get list of gems (slow, w/ progress)
+    const gems = await this.gems();
 
-    // quick pick
+    // show quick pick
     const options = { placeHolder: "Select a gem to open" };
-    const items = dirs.map((dir) => ({ label: path.basename(dir), dir }));
+    const items = gems.map((gem) => ({ label: path.basename(gem), gem }));
     const selection = await vscode.window.showQuickPick(items, options);
     if (!selection) {
       return;
     }
 
-    // open
-    const uri = vscode.Uri.file(selection.dir);
+    // and open
+    const uri = vscode.Uri.file(selection.gem);
     vscode.commands.executeCommand("vscode.openFolder", uri, true);
   }
 
   //
-  // sanity check before we do anything
+  // quick sanity check before we do anything
   //
 
   async sanity() {
@@ -60,11 +59,34 @@ class RubyOpenGem {
     if (!(await exists(path.join(this.root, "Gemfile")))) {
       throw new Error("No Gemfile found.");
     }
-    try {
-      await this.execRoot("bundle check");
-    } catch (e) {
-      throw new Error("`bundle check` failed. Try bundle install?");
-    }
+  }
+
+  //
+  // get gem dirs from bundler
+  //
+
+  async gems(): Promise<string[]> {
+    let gems: string[] = [];
+
+    await vscode.window.withProgress(
+      {
+        location: vscode.ProgressLocation.Notification,
+        title: "Ruby Open Gem: bundle list...",
+      },
+      async () => {
+        // bundle check (slow)
+        try {
+          await this.execRoot("bundle check");
+        } catch (e) {
+          throw new Error("`bundle check` failed. Try bundle install?");
+        }
+
+        // bundle list --paths (slow)
+        const { stdout } = await this.execRoot("bundle list --paths");
+        gems = stdout.trim().split("\n");
+      }
+    );
+    return gems;
   }
 
   //

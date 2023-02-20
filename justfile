@@ -16,7 +16,7 @@ package: check
   vsce package
   unzip -v *.vsix
 
-# publish using VSCE_PAT token
+# publish. hint: if VSCE_PAT is expired, get a new one
 publish: package
   vsce publish
 

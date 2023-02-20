@@ -2,7 +2,7 @@
   "name": "ruby-open-gem",
   "displayName": "Ruby Open Gem",
   "description": "Quickly open Ruby gems in vscode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "gurgeous",
   "repository": {
     "type": "git",
@@ -35,6 +35,9 @@
         "title": "Ruby Open Gem..."
       }
     ]
+  },
+  "scripts": {
+    "watch": "tsc -watch -p ."
   },
   "devDependencies": {
     "@types/glob": "^8.0.1",

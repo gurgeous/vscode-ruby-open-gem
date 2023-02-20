@@ -10,6 +10,8 @@ banner *ARGS:
 
 # create ruby-open-gem-0.0.1.vsix
 package: check
+  @just banner "Cleaning..."
+  rm -rf out/* *.vsix
   @just banner "Compiling..."
   tsc -p .
   @just banner "Creating vsix..."

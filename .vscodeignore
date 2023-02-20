@@ -7,3 +7,9 @@ src/**
 **/.eslintrc.json
 **/*.map
 **/*.ts
+
+# added by amd
+.tool-versions
+**/*.sync-conflict-*
+.prettierignore
+justfile

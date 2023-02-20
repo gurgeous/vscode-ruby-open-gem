@@ -20,4 +20,4 @@ Ruby Open Gem relies on bundler to list gems. Investigate `bundle check` and `bu
 
 ## License
 
-This extension is [licensed under the MIT License](LICENSE.txt).
+This extension is [licensed under the MIT License](LICENSE).

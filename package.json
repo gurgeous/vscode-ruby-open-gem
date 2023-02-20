@@ -3,6 +3,7 @@
   "displayName": "Ruby Open Gem",
   "description": "Quickly open Ruby gems in vscode",
   "version": "0.0.1",
+  "publisher": "gurgeous",
   "repository": {
     "type": "git",
     "url": "https://github.com/gurgeous/vscode-ruby-open-gem.git"
@@ -34,12 +35,6 @@
         "title": "Ruby Open Gem..."
       }
     ]
-  },
-  "scripts": {
-    "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
-    "vscode:prepublish": "yarn run compile",
-    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/glob": "^8.0.1",

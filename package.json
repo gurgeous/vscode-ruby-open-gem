@@ -1,0 +1,58 @@
+{
+  "name": "ruby-open-gem",
+  "displayName": "Ruby Open Gem",
+  "description": "Quickly open Ruby gems in vscode",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurgeous/vscode-ruby-open-gem.git"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "keywords": [
+    "bundler",
+    "gem",
+    "gemfile",
+    "rails",
+    "ruby"
+  ],
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:ruby",
+    "workspaceContains:Gemfile.lock"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ruby-open-gem.open",
+        "title": "Ruby Open Gem..."
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "vscode:prepublish": "yarn run compile",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.4"
+  },
+  "prettier": {
+    "printWidth": 100
+  }
+}

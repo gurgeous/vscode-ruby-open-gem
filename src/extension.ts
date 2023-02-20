@@ -4,13 +4,6 @@ import * as path from "path";
 import { promisify } from "util";
 import * as vscode from "vscode";
 
-//
-// TODO
-// - git
-// - github
-// - publish?
-//
-
 export function activate(context: vscode.ExtensionContext) {
   new RubyOpenGem(context);
 }

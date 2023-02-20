@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/gurgeous/bust-a-gem.svg?branch=master)](https://travis-ci.org/gurgeous/bust-a-gem)
-
 ![](icon.png)
 
 # Ruby Open Gem for VS Code

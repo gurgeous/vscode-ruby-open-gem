@@ -57,7 +57,7 @@ class RubyOpenGem {
     if (folders.length !== 1) {
       throw new Error("Only works with a single folder.");
     }
-    if (!fs.existsSync(path.join(this.root, "Gemfile"))) {
+    if (!(await exists(path.join(this.root, "Gemfile")))) {
       throw new Error("No Gemfile found.");
     }
     try {
@@ -73,11 +73,26 @@ class RubyOpenGem {
 
   // asyncExec, with cwd set to the workspace root
   async execRoot(cmd: string): Promise<{ stdout: string; stderr: string }> {
-    const asyncExec = promisify(cp.exec);
     return asyncExec(cmd, { cwd: this.root });
   }
 
   get root(): string {
     return vscode.workspace.workspaceFolders![0].uri.fsPath;
+  }
+}
+
+//
+// other helpers
+//
+
+const asyncExec = promisify(cp.exec);
+const asyncStat = promisify(fs.stat);
+
+async function exists(path: string): Promise<boolean> {
+  try {
+    await asyncStat(path);
+    return true;
+  } catch (e) {
+    return false;
   }
 }

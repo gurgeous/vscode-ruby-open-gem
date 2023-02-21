@@ -34,4 +34,4 @@ check:
 #
 
 dev:
-  tsc -watch -p .
+  tsc --watch -p .

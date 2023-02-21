@@ -2,11 +2,15 @@
 
 # Ruby Open Gem for VS Code
 
-This extension adds a **"Ruby Open Gem"** command for Ruby projects in VSCode. It scans your Gemfile with bundler and then opens the gem source in a new VS Code window. Handy!
+This extension adds a **"Ruby Open Gem"** command for Ruby projects in VS Code. It scans your Gemfile with bundler, then you can pick a gem to open in VS Code. Handy!
 
 ![](screenshot.png)
 
-Having trouble? Ruby Open Gem relies on bundler to list gems. Investigate `bundle check` and `bundle list --paths` in your project if you can't get it to work.
+## Installation & Troubleshooting
+
+In VS Code, go to **Install Extensions** and search for **ruby-open-gem**. Then click install.
+
+Having trouble making it work? Ruby Open Gem relies on bundler to list gems. Try `bundle check` and `bundle list --paths` in your project if you can't get it to work.
 
 ## Changelog
 
@@ -14,6 +18,5 @@ Having trouble? Ruby Open Gem relies on bundler to list gems. Investigate `bundl
 
 - Initial release
 
-## License
-
-This extension is [licensed under the MIT License](LICENSE).
+---
+This extension is licensed under the [MIT License](LICENSE).
